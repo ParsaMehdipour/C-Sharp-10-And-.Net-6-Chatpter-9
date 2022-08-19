@@ -6,8 +6,8 @@ using static System.Environment;
 OutputFileSystemInfo();
 Console.WriteLine("-----------------------------------");
 WorkWithDrives();
-Console.WriteLine("-----------------------------------");
-WorkWithDirectories();
+//Console.WriteLine("-----------------------------------");
+//WorkWithDirectories();
 Console.WriteLine("-----------------------------------");
 WorkWithFiles();
 
@@ -112,4 +112,19 @@ static void WorkWithFiles()
     StreamReader textReader = File.OpenText(backupFile);
     WriteLine(textReader.ReadToEnd());
     textReader.Close();
+
+
+    WriteLine($"Folder Name: {GetDirectoryName(textFile)}");
+    WriteLine($"File Name: {GetFileName(textFile)}");
+    WriteLine("File Name without Extension: {0}",
+    GetFileNameWithoutExtension(textFile));
+    WriteLine($"File Extension: {GetExtension(textFile)}");
+    WriteLine($"Random File Name: {GetRandomFileName()}");
+    WriteLine($"Temporary File Name: {GetTempFileName()}");
+
+    FileInfo info = new(backupFile);
+    WriteLine($"{backupFile}:");
+    WriteLine($"Contains {info.Length} bytes");
+    WriteLine($"Last accessed {info.LastAccessTime}");
+    WriteLine($"Has readonly set to {info.IsReadOnly}");
 }
