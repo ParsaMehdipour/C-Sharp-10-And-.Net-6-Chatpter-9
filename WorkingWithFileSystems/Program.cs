@@ -98,8 +98,7 @@ static void WorkWithFiles()
     textWriter.Close(); // close file and release resources
     WriteLine($"Does it exist? {File.Exists(textFile)}");
     // copy the file, and overwrite if it already exists
-    File.Copy(sourceFileName: textFile,
-    destFileName: backupFile, overwrite: true);
+    File.Copy(sourceFileName: textFile, destFileName: backupFile, overwrite: true);
     WriteLine(
     $"Does {backupFile} exist? {File.Exists(backupFile)}");
     Write("Confirm the files exist, and then press ENTER: ");
@@ -116,8 +115,7 @@ static void WorkWithFiles()
 
     WriteLine($"Folder Name: {GetDirectoryName(textFile)}");
     WriteLine($"File Name: {GetFileName(textFile)}");
-    WriteLine("File Name without Extension: {0}",
-    GetFileNameWithoutExtension(textFile));
+    WriteLine("File Name without Extension: {0}", GetFileNameWithoutExtension(textFile));
     WriteLine($"File Extension: {GetExtension(textFile)}");
     WriteLine($"Random File Name: {GetRandomFileName()}");
     WriteLine($"Temporary File Name: {GetTempFileName()}");
@@ -127,4 +125,9 @@ static void WorkWithFiles()
     WriteLine($"Contains {info.Length} bytes");
     WriteLine($"Last accessed {info.LastAccessTime}");
     WriteLine($"Has readonly set to {info.IsReadOnly}");
+
+    FileStream file = File.Open(backupFile, FileMode.Open, FileAccess.Read, FileShare.Read);
+
+    WriteLine("Is the backup file compressed? {0}",
+    info.Attributes.HasFlag(FileAttributes.Compressed));
 }
