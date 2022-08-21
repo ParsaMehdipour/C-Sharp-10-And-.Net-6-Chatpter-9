@@ -2,6 +2,8 @@
 using static System.Console;
 using static System.Environment;
 using static System.IO.Path;
+using NewJson = System.Text.Json.JsonSerializer;
+
 
 List<Person> people = new List<Person>()
 {
@@ -50,6 +52,7 @@ WriteLine();
 
 // Display the serialized object graph
 WriteLine(File.ReadAllText(path));
+WriteLine();
 
 using (FileStream xmlLoad = File.Open(path, FileMode.Open))
 {
@@ -65,6 +68,39 @@ using (FileStream xmlLoad = File.Open(path, FileMode.Open))
     }
 }
 
+// create a file to write to
+string jsonPath = Combine(CurrentDirectory, "people.json");
+using (StreamWriter jsonStream = File.CreateText(jsonPath))
+{
+    // create an object that will format as JSON
+    Newtonsoft.Json.JsonSerializer jss = new();
+    // serialize the object graph into a string
+    jss.Serialize(jsonStream, people);
+}
+WriteLine();
+WriteLine("Written {0:N0} bytes of JSON to: {1}",
+    arg0: new FileInfo(jsonPath).Length,
+    arg1: jsonPath);
+WriteLine();
+
+// Display the serialized object graph
+WriteLine(File.ReadAllText(jsonPath));
+WriteLine();
+
+
+using (FileStream jsonLoad = File.Open(jsonPath, FileMode.Open))
+{
+    // deserialize object graph into a List of Person
+    List<Person>? loadedPeople = await NewJson.DeserializeAsync(utf8Json: jsonLoad, returnType: typeof(List<Person>)) as List<Person>;
+    if (loadedPeople is not null)
+    {
+        foreach (Person p in loadedPeople)
+        {
+            WriteLine("{0} has {1} children.",
+            p.LastName, p.Children?.Count ?? 0);
+        }
+    }
+}
 public class Person
 {
     public Person() { }
