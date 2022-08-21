@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkingWithFileSystems", "W
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkingWithStreams", "WorkingWithStreams\WorkingWithStreams.csproj", "{4C6946B1-0AE8-4B69-8AF6-96C879D9930A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkingWithSerialization", "WorkingWithSerialization\WorkingWithSerialization.csproj", "{18734FD3-058C-4A56-AA28-D0A0C12917A3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{4C6946B1-0AE8-4B69-8AF6-96C879D9930A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C6946B1-0AE8-4B69-8AF6-96C879D9930A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C6946B1-0AE8-4B69-8AF6-96C879D9930A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18734FD3-058C-4A56-AA28-D0A0C12917A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18734FD3-058C-4A56-AA28-D0A0C12917A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18734FD3-058C-4A56-AA28-D0A0C12917A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18734FD3-058C-4A56-AA28-D0A0C12917A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
